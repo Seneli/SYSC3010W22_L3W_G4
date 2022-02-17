@@ -1,4 +1,4 @@
 def function_A():  
-    print("<name Student A>")
+    print("Deji Sayomi")
 
     #comment from branch A
