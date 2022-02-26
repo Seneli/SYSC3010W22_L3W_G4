@@ -11,11 +11,22 @@ const colourPalette = {
 //     @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap');
 // `; 
 
+const CenterContainer = styled.div`
+    text-align: center;
+    margin: auto;
+`; 
+
 const Title = styled.h1`
     @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap');
 
     color: #224957;
-    background-color: #AAAAAA;
+    font-family: 'Lexend Deca', sans-serif;
+`; 
+
+const Text = styled.p`
+    @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap');
+
+    color: #224957;
     font-family: 'Lexend Deca', sans-serif;
 `; 
 
@@ -66,4 +77,10 @@ const InputSubmit = styled.input.attrs({
     
 `; 
 
-export { Title, InputText, InputSubmit }; 
+const Vectors = styled.img`
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+`; 
+
+export { CenterContainer, Title, Text, InputText, InputSubmit, Vectors}; 

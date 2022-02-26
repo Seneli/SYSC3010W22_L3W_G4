@@ -1,5 +1,6 @@
 import React from 'react';
-import { Title, InputText, InputSubmit } from '../styles/styledComponents'; 
+import { CenterContainer, Title, Text, InputText, InputSubmit, Vectors } from '../styles/styledComponents'; 
+import vectorsImg from '../media/Vectors.png'; 
 
 interface SignInProps {
     
@@ -8,18 +9,16 @@ interface SignInProps {
 const SignIn: React.FunctionComponent<SignInProps> = () => {
     return ( 
         <>
-            <div>
+            <CenterContainer>
                 <Title>Sign In</Title>
-                <p>Sign in to the Covid Rapid Screener to enter the building</p>
+                <Text>Sign in to the Covid Rapid Screener to enter the building</Text>
                 <form>
                     <InputText placeholder="Login"/>
                     <InputText placeholder="Password"/>
                     <InputSubmit value="Login"/>
                 </form>
-            </div>
-            <div>
-                vectors go here!
-            </div>
+            </CenterContainer>
+            <Vectors src={vectorsImg}/>
         </>
      );
 }
