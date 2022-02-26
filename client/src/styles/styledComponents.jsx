@@ -25,8 +25,13 @@ const BoxContainer = styled.div`
 const CenterContainer = styled.div`
     text-align: center;
     margin: auto;
-    /* top: 50%;
-    left: 50%;  */
+    position: absolute; 
+    top: 30%;
+    /* left: 20%;  */
+    /* display: flex; */
+    /* justify-content: center; */
+    align-items: center;
+    height: 200px;
 `; 
 
 const Header = styled.div`
@@ -47,7 +52,7 @@ const Title = styled.h1`
 const Text = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap');
 
-    color: color: ${props => props.color || "#224957"}; 
+    color: ${props => props.color || "#224957"}; 
     font-family: 'Lexend Deca', sans-serif;
 `; 
 

@@ -25,7 +25,7 @@ const MaskDetection: React.FunctionComponent<MaskDetectionProps> = () => {
                 <Title>Mask Detection</Title>
                 <Text>Stand still in front of the camera until the CSR detects your mask</Text>
                 <BoxContainer/>
-                <InputSubmit/>
+                <InputSubmit onClick={maskValidation}/>
             </CenterContainer>
             <Vectors src={vectorsImg}/>
         </>
