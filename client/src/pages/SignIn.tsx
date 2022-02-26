@@ -7,12 +7,17 @@ interface SignInProps {
 }
  
 const SignIn: React.FunctionComponent<SignInProps> = () => {
+
+    const Login = () => {
+        window.location.replace('http://localhost:3000/Register');
+    }
+
     return ( 
         <>
             <CenterContainer>
                 <Title>Sign In</Title>
                 <Text>Sign in to the Covid Rapid Screener to enter the building</Text>
-                <form>
+                <form onSubmit={Login} action="">
                     <InputText placeholder="Login"/>
                     <InputText placeholder="Password"/>
                     <InputSubmit value="Login"/>

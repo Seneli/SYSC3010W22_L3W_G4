@@ -14,12 +14,22 @@ const colourPalette = {
 const CenterContainer = styled.div`
     text-align: center;
     margin: auto;
+    /* top: 50%;
+    left: 50%;  */
+`; 
+
+const Header = styled.div`
+    text-align: center;
+    margin: auto;
+    padding: 5vh; 
+    //color: #FFFFFF;
+    background-color: #224957;
 `; 
 
 const Title = styled.h1`
     @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap');
-
-    color: #224957;
+    
+    color: ${props => props.color || "#224957"}; 
     font-family: 'Lexend Deca', sans-serif;
 `; 
 
@@ -47,6 +57,7 @@ const InputText = styled.input.attrs({
 
     background: #224957;
     border-radius: 10px;
+    border: none;
     
     ::placeholder {
         color: #FFFFFF;
@@ -83,4 +94,4 @@ const Vectors = styled.img`
     width: 100%;
 `; 
 
-export { CenterContainer, Title, Text, InputText, InputSubmit, Vectors}; 
+export { CenterContainer, Header, Title, Text, InputText, InputSubmit, Vectors}; 
