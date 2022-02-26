@@ -11,6 +11,17 @@ const colourPalette = {
 //     @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap');
 // `; 
 
+const BoxContainer = styled.div`
+    margin: auto;
+    width: 80vw;
+    height: 40vh;
+    background: ${props => props.background|| "#23667E"}; 
+    border: 5px solid #093545;
+    box-sizing: border-box;
+    box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 25px;
+`;
+
 const CenterContainer = styled.div`
     text-align: center;
     margin: auto;
@@ -36,7 +47,7 @@ const Title = styled.h1`
 const Text = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap');
 
-    color: #224957;
+    color: color: ${props => props.color || "#224957"}; 
     font-family: 'Lexend Deca', sans-serif;
 `; 
 
@@ -64,6 +75,26 @@ const InputText = styled.input.attrs({
     }
 `; 
 
+const buttonStyles = `
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap');
+
+    font-family: 'Lexend Deca', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height, or 125% */
+    text-align: center;
+    text-transform: capitalize;
+    color: #224957;
+
+    background: #20DF7F;
+    border: none; 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 10px 50px; 
+`;
+
 const InputSubmit = styled.input.attrs({
     type: 'submit'
 })`
@@ -79,13 +110,11 @@ const InputSubmit = styled.input.attrs({
     text-transform: capitalize;
     color: #224957;
 
-
     background: #20DF7F;
     border: none; 
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     padding: 10px 50px; 
-    
 `; 
 
 const Vectors = styled.img`
@@ -94,4 +123,4 @@ const Vectors = styled.img`
     width: 100%;
 `; 
 
-export { CenterContainer, Header, Title, Text, InputText, InputSubmit, Vectors}; 
+export { BoxContainer, CenterContainer, Header, Title, Text, InputText, InputSubmit, Vectors }; 
