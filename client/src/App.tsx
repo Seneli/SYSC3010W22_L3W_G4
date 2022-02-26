@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { SignIn, Register, Screening, Mask, Temperature, Success, Error } from "./pages"; 
 
 interface AppProps {
-    
 }
  
 const App : React.FunctionComponent<AppProps> = () => {
