@@ -1,31 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { CenterContainer, Title, Text, InputText, InputSubmit, Vectors } from '../styles/styledComponents'; 
 import vectorsImg from '../media/Vectors.png'; 
+
+import firebaseDB from '../firebase/initFirebase';
+import { ref, set } from "firebase/database";
+
 
 interface SignInProps {
     
 }
  
 const SignIn: React.FunctionComponent<SignInProps> = () => {
-
+    const [userName, setUserName] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = () => {
-        // await sending stuff to the back end and validating 
-        // depending on validaiton move to screening -
-        // else return some form of error messaging
-        //window.location.replace('http://localhost:3000/Register');
-        navigate("/Screening");
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        console.log(firebaseDB);
+
+        set(ref(firebaseDB, 'System_variables'), {
+            currentUser: userName,
+            passedMaskDetection: "null",
+            passedTempDetection: "null",
+            runDetection: "true",
+        });
+        navigate("/Mask");
+    }
+
+    const handleChange = (e: any) => {
+        setUserName(e.target.value);
     }
 
     return ( 
         <>
             <CenterContainer>
                 <Title>Sign In</Title>
-                <Text>Sign in to the Covid Rapid Screener to enter the building</Text>
-                <form onSubmit={handleSubmit} action="">
-                    <InputText placeholder="Login"/>
+                <Text>Enter your student number below to begin the Rapid Screening process.</Text>
+                <form onSubmit={(e) => handleSubmit(e)} action="">
+                    <InputText placeholder="Student Number" onChange={handleChange}/>
                     <InputText placeholder="Password"/>
                     <InputSubmit value="Login"/>
                 </form>

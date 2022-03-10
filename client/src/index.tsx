@@ -2,7 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //import './index.css';
 import App from './App';
+
 import reportWebVitals from './reportWebVitals';
+//import 'dotenv/config';
+
+console.log(process.env.REACT_APP_PUBLIC_FIREBASE_PROJECT_ID); 
+console.log(process.env.REACT_APP_PUBLIC_FIREBASE_API_KEY); 
 
 ReactDOM.render(
   <React.StrictMode>
