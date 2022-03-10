@@ -16,13 +16,14 @@ storage = firebase.storage()
 db = firebase.database()
 
 def download_image(image_name):
-    storage.child(image_name).download(filename="ml1.jpg", path=os.path.basenae(image_name))
+    storage.child(image_name).download(filename="ml1.jpg", path='/Users/senster/Projects/SYSC3010/SYSC3010Project/end-to-end/')
+    #storage.delete(image_name)
 
 def set_mask_detection_result(result):
     db.child("System_variables").child("passedMaskDetection").set(result)
 
 
 download_image("image.jpg")
-set_mask_detection_result(true)
-sleep(10)
-set_mask_detection_result(false)
+set_mask_detection_result(True)
+time.sleep(10)
+set_mask_detection_result(False)
