@@ -1,5 +1,6 @@
 import pyrebase
 import time
+import os
 from datetime import datetime
 # for end to end demo purposes
 
@@ -16,13 +17,13 @@ storage = firebase.storage()
 db = firebase.database()
 
 def download_image(image_name):
-    storage.child(image_name).download(filename="ml1.jpg", path=os.path.basenae(image_name))
+    storage.child(image_name).download(filename="ml1.jpg", path=os.path.basename(image_name))
 
 def set_mask_detection_result(result):
     db.child("System_variables").child("passedMaskDetection").set(result)
 
 
 download_image("image.jpg")
-set_mask_detection_result(true)
-sleep(10)
-set_mask_detection_result(false)
+set_mask_detection_result("true")
+time.sleep(10)
+set_mask_detection_result("false")
