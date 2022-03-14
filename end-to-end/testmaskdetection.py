@@ -1,5 +1,6 @@
 import pyrebase
 import time
+import os
 from datetime import datetime
 # for end to end demo purposes
 
@@ -24,6 +25,6 @@ def set_mask_detection_result(result):
 
 
 download_image("image.jpg")
-set_mask_detection_result(True)
+set_mask_detection_result("true")
 time.sleep(10)
-set_mask_detection_result(False)
+set_mask_detection_result("false")
