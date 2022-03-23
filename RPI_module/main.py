@@ -3,12 +3,12 @@ import time
 from datetime import datetime
 import firebase_admin
 from firebase_admin import credentials, db
+from firebase_admin import storage
 
-import camera
+#import camera as camera
 
 # global variables
 system_number = "001"
-
 
 #initialize connection to Firebase RealTimeDatabase
 def connect_to_rtdb():
@@ -60,13 +60,26 @@ def get_System_Variables():
     ref = db.reference(system_number + "/System_Variables")
     return ref.get()
 
+#BUGGY! 
 def user_failed_screening(system_variables):
     print("put their name in the failed list")
     date = datetime.today().strftime('%Y-%m-%d')
-    print("Getting System_Variables")
+        # do test for date and time? 
+
+    reason_for_failure = ""
+
+    if system_variables["passedMaskDetection"] == 'false':
+        reason_for_failure = "failed mask detection"
+    elif system_variables["passedTempDetection"] == 'false':
+        reason_for_failure = "failed temperature detection"
+
     ref = db.reference(system_number + "/Failed_Screenings")
     ref.push({
-        
+        date : {
+            system_variables["currentUser"] : {
+                "reasonForFailure" : reason_for_failure
+            }
+        }
     })
 
 def main():
@@ -74,43 +87,53 @@ def main():
     connect_to_rtdb()
     initialize_rtdb_datastruct()
     update_currentUser("monka")
-    camera = get_camera()
+    self.bucket = storage.bucket()
+    bucket = storage.bucket()
+    blob = bucket.blob("./image"+ path_to_image)
+    blob.upload_from_filename("./image"+ path_to_image)
+    # cam = camera.get_camera()
 
-    while(True):
+    # while(True):
 
-        sys_var = get_System_Variables()
-        if sys_var['runDetection'] == "true":
+    #     screening_failed = False 
+    #     sys_var = get_System_Variables()
+
+    #     if sys_var['runDetection'] == "true":
             
-            #run mask detection stuff
-            for i in range(10):
-                print("PiCam takes picture")
-                capture_image(camera, "/images")
-                #insert image upload code here
-                print("upload it to storage")
+    #         #run mask detection stuff
+    #         for i in range(10):
+    #             print("PiCam takes picture")
+    #                 ## TEST IF CAMERA TAKES PICTURE
+    #                 ## TEST IF CAMERA DELETES PICTURE FROM LOCAL
+    #             #camera.capture_image(cam, "/images")
+    #             #insert image upload code here
+    #             print("upload it to storage")
 
-                passedMaskDetection = get_passedMaskDetection()
-                if passedMaskDetection == "true":
-                    #break for loop
-                    continue 
-                elif passedMaskDetection == "false":
-                    user_failed_screening(sys_var)
-                else:
-                    #keep going in the loop
+    #             passedMaskDetection = get_passedMaskDetection()
+    #             if passedMaskDetection == "true":
+    #                 #break for loop
+    #                 break 
+    #             elif passedMaskDetection == "false":
+    #                 screening_failed = True
+    #                 user_failed_screening(sys_var)
+    #             else:
+    #                 #keep going in the loop
             
-            #every loop check if it failed
-            while(True):
-                passedMaskDetection = get_passedMaskDetection()
-                if passedMaskDetection == "true":
-                    break
-                elif passedMaskDetection == "false":
-                    user_failed_screening(sys_var)
-                    break
+    #         #every loop check if it failed
+    #         while (not screening_failed):
+    #             passedMaskDetection = get_passedMaskDetection()
+    #             if passedMaskDetection == "true":
+    #                 break
+    #             elif passedMaskDetection == "false":
+    #                 screening_failed = True
+    #                 user_failed_screening(sys_var)
+    #                 break
 
-        if True:
-            print("run temperature sensing stuff")
-            print("check if it failed")
+    #     if True:
+    #         print("run temperature sensing stuff")
+    #         print("check if it failed")
 
-        #once it passes - delete all pictures in storage
+    #     once it passes - delete all pictures in storage
 
  
         
