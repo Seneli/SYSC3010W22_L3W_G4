@@ -2,8 +2,8 @@ from datetime import datetime
 import os
 
 # custom imports
-from firebase import FireBase
-from camera import Camera
+from classes.firebase import FireBase
+from classes.camera import Camera
 
 
 class Device:
@@ -12,9 +12,14 @@ class Device:
         self.system_number = system_number
         self.owner = owner
         self.contact_info = contact_info
+        
         self.firebase = FireBase(system_number)
+        self.firebase.initialize_rtdb_datastruct()
+        
         self.camera = Camera()
-        print(system_number, owner, contact)
+        print(self.system_number, self.owner, self.contact_info)
+        
+        self.running = False
         
         
     def user_failed_screening(self, system_variables, firebase):
@@ -39,16 +44,19 @@ class Device:
         print("run temperature sensing stuff")
         print("check if it failed")
     
-    def delete_all_pictures_and_reset(firebase):
+    def delete_all_pictures_off_local():
         os.rmdir("/images")
         os.mkdir("/images")
 
     def run():
-        self.firebase.initialize_rtdb_datastruct()
+        
+        self.running = True
 
-        while(True):
+        while(self.running):
 
             sys_var = firebase.get_System_Variables()
+            
+            """
 
             if sys_var['runDetection'] == "true":
                 
@@ -84,3 +92,4 @@ class Device:
 
             delete_all_pictures_and_reset(firebase) 
             # once it passes - delete all pictures in storage
+        """

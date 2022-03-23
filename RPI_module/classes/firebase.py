@@ -11,7 +11,7 @@ class FireBase:
             'storageBucket': 'covid-rapid-screener.appspot.com'
         })
         self.init = True
-        self.system_number = system_number
+        self.system_number = str(system_number)
         self.storage = storage.bucket()
 
         # Put your local file path 
