@@ -3,10 +3,9 @@ from datetime import datetime
 
 class FireBase:
 
-    def __init__(self, system_number = "001"):
+    def __init__(self, system_number = 1):
 
-        print("Creating connection to Firebase RealTime Database...")
-        cred = credentials.Certificate("private_lol/firebase-sdk.json")
+        cred = credentials.Certificate("firebase-sdk.json")
         initialize_app(cred, {
             'databaseURL': 'https://covid-rapid-screener-default-rtdb.firebaseio.com/',
             'storageBucket': 'covid-rapid-screener.appspot.com'
