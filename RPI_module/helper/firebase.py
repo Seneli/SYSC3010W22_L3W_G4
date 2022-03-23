@@ -3,9 +3,7 @@ from datetime import datetime
 
 class FireBase:
 
-    def __init__(self, system_number = "001", test_mode = False):
-        if (test_mode):
-            print("this object was initialized in test mode")
+    def __init__(self, system_number = "001"):
 
         print("Creating connection to Firebase RealTime Database...")
         cred = credentials.Certificate("private_lol/firebase-sdk.json")
@@ -25,21 +23,19 @@ class FireBase:
     #initialize data structure in DATABASE
     def initialize_rtdb_datastruct(self):
         baseRef = db.reference('/')
-        baseRef.set({ 
-            "001": {
-                "Failed_Screenings": {
-                    "DATE": {
-                    "STUDENT NUMBER": {
-                            "ReasonForFailure": 1
-                        }
+        baseRef.child(self.system_number).set({
+            "Failed_Screenings": {
+                "DATE": {
+                "STUDENT NUMBER": {
+                        "ReasonForFailure": 1
                     }
-                },
-                "System_Variables": {
-                    "currentUser": 5,
-                    "passedMaskDetection": 5,
-                    "passedTempDetection": 5,
-                    "runDetection": 5
                 }
+            },
+            "System_Variables": {
+                "currentUser": 5,
+                "passedMaskDetection": 5,
+                "passedTempDetection": 5,
+                "runDetection": 5
             }
         })
 

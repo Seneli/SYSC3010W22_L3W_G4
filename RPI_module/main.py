@@ -6,7 +6,8 @@ from helper.firebase import FireBase
 #import camera as camera
 
 # global variables
-system_number = "001"
+system_number = 1
+owner = 
 
 
 def user_failed_screening(system_variables, firebase):
@@ -26,7 +27,7 @@ def delete_all_pictures_and_reset(firebase):
     os.mkdir("/images")
 
 def main():
-    firebase = FireBase("001", True)
+    firebase = FireBase(system_number)
     firebase.initialize_rtdb_datastruct()
 
     while(True):
@@ -70,8 +71,6 @@ def main():
         # once it passes - delete all pictures in storage
 
  
-        
-
 
 if __name__ == "__main__":
     print("RPI Module starting...")
