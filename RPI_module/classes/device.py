@@ -17,12 +17,19 @@ class Device:
         self.firebase.initialize_rtdb_datastruct()
         
         self.camera = Camera()
-        print(self.system_number, self.owner, self.contact_info)
         
         self.running = False
+        self.currentTest = ""
+        self.sys_var = {}
+        
+    
+    def die(self):
+        self.firebase.die()
+        self.camera.die()
         
         
-    def user_failed_screening(self, system_variables, firebase):
+    def user_failed_screening(self):
+        system_variables = self.firebase.get_System_Variables()
         date = datetime.today().strftime('%Y-%m-%d')
         
         reason_for_failure = ""
@@ -31,51 +38,62 @@ class Device:
         elif system_variables["passedTempDetection"] == 'false':
             reason_for_failure = "failed temperature detection"
             
-        return date, reason_for_failure
+        firebase.log_failed_user(date, system_variables["currentUser"], reason_for_failure) 
         
-    def take_pictures_for_mask_detection():
-        pass
+    def take_pictures_for_mask_detection(self):
+        for i in range(10):
+            self.camera.capture_image("./images/", str(i) + ".jpg")
+            self.firebase.put_image_in_storage(i+".jpg", "images/"+i+".jpg")
+
+            passedMaskDetection = self.firebase.get_passedMaskDetection()
+            
+            if passedMaskDetection == "true":
+                self.currentTest = "temp"
+                break
+            
+            elif passedMaskDetection == "false":
+                user_failed_screening()
+                self.running = False
+                self.currentTest = ""
+                break
+            
+
+    def wait_for_mask_detection_module_to_finish(self):
+        while(passedMaskDetection == "null"): #null = keep polling
+            passedMaskDetection = self.firebase.get_passedMaskDetection()
+            if passedMaskDetection == "true":   # true = next test
+                break
+            elif passedMaskDetection == "false": #false = failed test
+                user_failed_screening(sys_var)
+                break
     
-    def wait_for_mask_detection_module_to_finish():
-        pass
-    
-    def run_temperature_sensor_module():
+    def run_temperature_sensor_module(self):
         pass
         print("run temperature sensing stuff")
         print("check if it failed")
     
-    def delete_all_pictures_off_local():
+    def delete_all_pictures_off_local(self):
         os.rmdir("/images")
         os.mkdir("/images")
 
-    def run():
+    def run(self):
         
         self.running = True
 
         while(self.running):
 
-            sys_var = firebase.get_System_Variables()
-            
-            """
+            self.sys_var = self.firebase.get_System_Variables()
 
-            if sys_var['runDetection'] == "true":
+            if self.sys_var['runDetection'] == "true":
                 
-                #run mask detection 
-                for i in range(10):
-                    print("PiCam takes picture")
-                        ## TEST IF CAMERA TAKES PICTURE
-                        ## TEST IF CAMERA DELETES PICTURE FROM LOCAL
-                    #camera.capture_image(cam, "/images")
-                    #insert image upload code here
-                    firebase.put_image_in_storage(i+".jpg", "images/ml1.jpg")
-
-                    passedMaskDetection = firebase.get_passedMaskDetection()
-                    if passedMaskDetection == "true":
-                        break 
-                    elif passedMaskDetection == "false":
-                        user_failed_screening(sys_var)
-                    else:
-                        pass
+                self.currentTest = "mask"
+                take_pictures_for_mask_detection()
+                
+                self.running = False
+              
+            """
+                if not self.runnning:
+                    break 
                 
                 while(passedMaskDetection == "null"): #null = keep polling
                     passedMaskDetection = get_passedMaskDetection()

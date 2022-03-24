@@ -7,6 +7,9 @@ class Camera:
         #returns camera instance
         self.camera = PiCamera()
         
+    def die(self):
+        self.camera.close()
+        
     #takes in camera instance and preview time
     #displays camera preview for the indicated amoutn of time
     def camera_preview(self, camera, preview_time):
@@ -23,12 +26,12 @@ class Camera:
     #If preview is true, preview is started
     # the code wats the indicated countdown time before the image ist aken and stored in the indicated location
     # the preview is stopped if it was started
-    def capture_image(self, camera, image_out_location, countdown_time = 0, preview = False):
+    def capture_image(self, image_out_location, image_name, countdown_time = 0, preview = False):
         if preview:
-            camera.start_preview()
+            self.camera.start_preview()
         
         sleep(countdown_time)
-        camera.capture(image_out_location) # + ""
+        self.camera.capture(image_out_location + image_name) # + ""
             
         if preview:
             camera.stop_preview()
