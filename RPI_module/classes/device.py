@@ -18,8 +18,10 @@ class Device:
         
         self.camera = Camera()
         
+        #self.IR_camera = asdasd
+        
         self.running = False
-        self.currentTest = ""
+        self.currentTest = "waiting"
         self.sys_var = {}
         
     
@@ -43,7 +45,7 @@ class Device:
     def take_pictures_for_mask_detection(self):
         for i in range(10):
             self.camera.capture_image("./images/", str(i) + ".jpg")
-            self.firebase.put_image_in_storage(i+".jpg", "images/"+i+".jpg")
+            self.firebase.put_image_in_storage(str(i)+".jpg", str(i)+".jpg")
 
             passedMaskDetection = self.firebase.get_passedMaskDetection()
             
@@ -59,12 +61,15 @@ class Device:
             
 
     def wait_for_mask_detection_module_to_finish(self):
+        passedMaskDetection = self.firebase.get_passedMaskDetection()
         while(passedMaskDetection == "null"): #null = keep polling
             passedMaskDetection = self.firebase.get_passedMaskDetection()
             if passedMaskDetection == "true":   # true = next test
+                self.currentTest = "temp"
                 break
             elif passedMaskDetection == "false": #false = failed test
                 user_failed_screening(sys_var)
+                self.currentTest = "none"
                 break
     
     def run_temperature_sensor_module(self):
@@ -72,42 +77,36 @@ class Device:
         print("run temperature sensing stuff")
         print("check if it failed")
     
-    def delete_all_pictures_off_local(self):
-        os.rmdir("/images")
-        os.mkdir("/images")
+    def delete_all_pictures_off_local(self, folder):
+        for file in os.listdir(folder):
+            os.remove(folder + "/" + file)
 
     def run(self):
-        
+        self.firebase.delete_image_from_storage("image.jpg")
+        self.firebase.delete_bucket_from_storage("./")
+        """
         self.running = True
+        print("device now running")
 
         while(self.running):
 
-            self.sys_var = self.firebase.get_System_Variables()
+            sys_var = self.firebase.get_System_Variables()
 
-            if self.sys_var['runDetection'] == "true":
+            if sys_var['runDetection'] == "true":
+                print("run mask detection tests")
                 
                 self.currentTest = "mask"
-                take_pictures_for_mask_detection()
+                self.take_pictures_for_mask_detection()
+                print("pictures taken")
+                self.wait_for_mask_detection_module_to_finish()
+            
+            if self.currentTest == "temp":
+                print("run temperature tests")
+                self.currentTest = "none"
                 
+            if self.currentTest == "none":
+                print("delete all pictures off local")
+                self.delete_all_pictures_off_local("images")
+                self.currentTest = "waiting"
                 self.running = False
-              
-            """
-                if not self.runnning:
-                    break 
-                
-                while(passedMaskDetection == "null"): #null = keep polling
-                    passedMaskDetection = get_passedMaskDetection()
-                    if passedMaskDetection == "true":   # true = next test
-                        break
-                    elif passedMaskDetection == "false": #false = failed test
-                        user_failed_screening(sys_var)
-                        break
-
-            #run temperature detection
-            sys_var = self.firebase.get_System_Variables()
-            if sys_var["runDetection"] == "true":
-                pass
-
-            delete_all_pictures_and_reset(firebase) 
-            # once it passes - delete all pictures in storage
         """
