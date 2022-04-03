@@ -7,9 +7,7 @@ import firebaseDB from '../firebase/initFirebase';
 import { ref, set } from "firebase/database";
 
 
-interface SignInProps {
-    
-}
+type SignInProps = string; 
  
 const SignIn: React.FunctionComponent<SignInProps> = () => {
     const [userName, setUserName] = useState("");
