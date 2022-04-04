@@ -1,47 +1,43 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import firebaseDB from '../firebase/initFirebase';
-import { ref, set, onValue} from "firebase/database";
-import { BoxContainer, CenterContainer, Header, Title, Text, InputText, InputSubmit, Vectors } from '../styles/styledComponents'; 
-import vectorsImg from '../media/Vectors.png'; 
+import { useNavigate } from 'react-router-dom';
+import { realtimeDB } from '../firebase/initFirebase';
+import { ref, update, onValue } from 'firebase/database';
+import { BoxContainer, CenterContainer, Header, Title, Text, InputText, InputSubmit, Vectors } from '../styles/styledComponents';
+import vectorsImg from '../media/Vectors.png';
 
+interface ErrorProps {}
 
-interface ErrorProps {
-    
-}
- 
 const Error: React.FunctionComponent<ErrorProps> = () => {
-    const [userName, setUserName] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        console.log(firebaseDB);
+        console.log(realtimeDB);
 
         //const systemVariablesRef = firebaseDB.ref("Sy")
-        
-        set(ref(firebaseDB, 'System_variables'), {
-            currentUser: userName,
-            passedMaskDetection: "null",
-            passedTempDetection: "null",
-            runDetection: "false",
-        });
-        console.log(userName);
-        navigate("/");
-    }
 
-    const tempSenseState = ref(firebaseDB, 'System_variables/' + "passedTempDetection");
+        update(ref(realtimeDB, process.env.REACT_APP_PUBLIC_FIREBASE_SYSTEM_NUMBER + '/System_Variables'), {
+            currentUser: '',
+            detectedTemp: 'null',
+            passedMaskDetection: 'null',
+            passedTempDetection: 'null',
+            runDetection: 'false'
+        });
+        navigate('/');
+    };
+
+    const tempSenseState = ref(realtimeDB, process.env.REACT_APP_PUBLIC_FIREBASE_SYSTEM_NUMBER + 'System_Variables/' + 'passedTempDetection');
     onValue(tempSenseState, (snapshot) => {
         const data = snapshot.val();
         console.log(data);
-        if (data === "true"){
-            navigate("/Success");
-        } else if (data === "false"){
-            navigate("/Error");
+        if (data === 'true') {
+            navigate('/Success');
+        } else if (data === 'false') {
+            navigate('/Error');
         }
     });
 
-    return ( 
+    return (
         <>
             <CenterContainer>
                 <BoxContainer background="#23667E">
@@ -50,11 +46,11 @@ const Error: React.FunctionComponent<ErrorProps> = () => {
                         <Text color="#fff">If you have reached this page it means you hit an error</Text>
                     </CenterContainer>
                 </BoxContainer>
-                <InputSubmit value="Return to Sign In Page" onClick={(e:any) => handleSubmit(e)}/>
+                <InputSubmit value="Return to Sign In Page" onClick={(e: any) => handleSubmit(e)} />
             </CenterContainer>
-            <Vectors src={vectorsImg}/>
+            <Vectors src={vectorsImg} />
         </>
     );
-}
- 
+};
+
 export default Error;
