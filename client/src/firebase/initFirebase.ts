@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getStorage, ref, deleteObject } from 'firebase/storage';
+import { getStorage, ref, deleteObject, getDownloadURL, listAll, StorageReference } from 'firebase/storage';
 import { getDatabase } from 'firebase/database';
 
 const config = {
@@ -14,6 +14,8 @@ const app = initializeApp(config);
 const realtimeDB = getDatabase(app);
 const firebaseStorage = getStorage(app);
 
+const systemStorageFolder = ref(firebaseStorage, process.env.REACT_APP_PUBLIC_FIREBASE_SYSTEM_NUMBER);
+
 const deleteImage = (refName: string) => {
     const imageRef = ref(firebaseStorage, process.env.REACT_APP_PUBLIC_FIREBASE_SYSTEM_NUMBER + '/' + refName);
     console.log(imageRef);
@@ -27,4 +29,4 @@ const deleteImage = (refName: string) => {
         });
 };
 
-export { realtimeDB, firebaseStorage, deleteImage };
+export { realtimeDB, firebaseStorage, systemStorageFolder, deleteImage };

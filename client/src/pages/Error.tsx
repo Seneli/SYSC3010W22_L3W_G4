@@ -14,8 +14,6 @@ const Error: React.FunctionComponent<ErrorProps> = () => {
         e.preventDefault();
         console.log(realtimeDB);
 
-        //const systemVariablesRef = firebaseDB.ref("Sy")
-
         update(ref(realtimeDB, process.env.REACT_APP_PUBLIC_FIREBASE_SYSTEM_NUMBER + '/System_Variables'), {
             currentUser: '',
             detectedTemp: 'null',
