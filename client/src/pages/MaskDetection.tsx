@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { realtimeDB, systemStorageFolder } from '../firebase/initFirebase';
+import { realtimeDB, firebaseStorage, systemStorageFolder } from '../firebase/initFirebase';
 import { StorageReference, getDownloadURL, listAll, ref as storageRef } from 'firebase/storage';
-import { ref, onValue } from 'firebase/database';
+import { ref, onValue, set } from 'firebase/database';
 import { useNavigate } from 'react-router-dom';
-import { BoxContainer, CenterContainer, Header, Title, Text, InputText, InputSubmit, Vectors } from '../styles/styledComponents';
+import { BoxImg, Button, CenterContainer, Header, Title, Text, InputText, InputSubmit, Vectors } from '../styles/styledComponents';
 import vectorsImg from '../media/Vectors.png';
 
 interface MaskDetectionProps {}
@@ -13,11 +13,18 @@ const MaskDetection: React.FunctionComponent<MaskDetectionProps> = () => {
     const [lastImageRef, setLastImageRef] = useState('https://example.com/');
 
     useEffect(() => {
-        let errorIMG = storageRef(systemStorageFolder, '/error.jpeg');
+        let errorIMG = storageRef(systemStorageFolder, '/loading.jpg');
+
+        const processed_img_ref = storageRef(firebaseStorage, `/${process.env.REACT_APP_PUBLIC_FIREBASE_SYSTEM_NUMBER}_processed_images`);
+        console.log(processed_img_ref);
 
         setInterval(() => {
-            listAll(systemStorageFolder)
+            //storageRef(firebaseStorage, `${process.env.REACT_APP_PUBLIC_FIREBASE_SYSTEM_NUMBER}_process_images`)
+            listAll(processed_img_ref) //
                 .then((res) => {
+                    // res.items.forEach((item) => {
+                    //     console.log(item);
+                    // });
                     getDownloadURL(res.items[res.items.length - 2])
                         .then((url) => {
                             setLastImageRef(url);
@@ -38,6 +45,12 @@ const MaskDetection: React.FunctionComponent<MaskDetectionProps> = () => {
         }, 1000);
     }, []);
 
+    const retakeImages = () => {
+        set(ref(realtimeDB, process.env.REACT_APP_PUBLIC_FIREBASE_SYSTEM_NUMBER + '/' + 'System_Variables'), {
+            retakePictures: 'true'
+        });
+    };
+
     const maskValidation = () => {
         navigate('/Temperature');
     };
@@ -55,10 +68,11 @@ const MaskDetection: React.FunctionComponent<MaskDetectionProps> = () => {
 
     return (
         <>
-            <CenterContainer>
+            <CenterContainer placement="15%">
                 <Title>Mask Detection</Title>
                 <Text>Stand still in front of the camera until the CSR detects your mask</Text>
-                <BoxContainer src={lastImageRef} />
+                <BoxImg src={lastImageRef} alt="image still loading" />
+                {/* <Button onClick={retakeImages}> Click to Retake Images </Button> */}
                 <InputSubmit onClick={maskValidation} />
             </CenterContainer>
             <Vectors src={vectorsImg} />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { realtimeDB } from '../firebase/initFirebase';
+import { realtimeDB, deleteImage } from '../firebase/initFirebase';
 import { ref, update, onValue } from 'firebase/database';
 import { BoxContainer, CenterContainer, Header, Title, Text, InputText, InputSubmit, Vectors } from '../styles/styledComponents';
 import vectorsImg from '../media/Vectors.png';
@@ -21,6 +21,11 @@ const Error: React.FunctionComponent<ErrorProps> = () => {
             passedTempDetection: 'null',
             runDetection: 'false'
         });
+
+        for (let i = 0; i < 10; i++) {
+            deleteImage(i + '.jpg');
+        }
+
         navigate('/');
     };
 
@@ -39,10 +44,10 @@ const Error: React.FunctionComponent<ErrorProps> = () => {
         <>
             <CenterContainer>
                 <BoxContainer background="#23667E">
-                    <CenterContainer>
-                        <Title color="#fff">Error Page</Title>
-                        <Text color="#fff">If you have reached this page it means you hit an error</Text>
-                    </CenterContainer>
+                    <Title color="#fff" top="10%">
+                        Error Page
+                    </Title>
+                    <Text color="#fff">If you have reached this page it means you hit an error</Text>
                 </BoxContainer>
                 <InputSubmit value="Return to Sign In Page" onClick={(e: any) => handleSubmit(e)} />
             </CenterContainer>
