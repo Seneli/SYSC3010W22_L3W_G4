@@ -40,18 +40,18 @@ passedMaskDetection to 'true' or 'false' depending on whether the user passes th
 
 The detect_mask_firebase.py uses this file to load the face mask detector model from disk.
 
-### 'rapid_screener_certificate.json'
+### `rapid_screener_certificate.json`
 
 This file specifies the authentication for the rapid screener to access firebase.
 
-### 'requirements.txt'
+### `requirements.txt`
 
 Specifies all the required packages that need to be installed using pip.
 
 *note: several of these packages are outdated. It is much better to simply install the more 
        recent packages by deleting the version numbers beside each package name.
 
-### 'train_mask_detector.py'
+### `train_mask_detector.py`
 
 This file trains the model by looking at a images of people in two different folders. The first 
 folder (titled with_mask) containins over 1,000 images of people wearing a mask correctly. The 
