@@ -57,16 +57,21 @@ List of hardware needed:
 Strongly suggest, but optional:
 - [STEMMA QT / Qwicc JST SH 4-pin to male Headers Cable](https://www.adafruit.com/product/4209)
 
-![Hardware connection](https://cdn.discordapp.com/attachments/931186498110386192/962484750617047040/unknown.png)
-
 #### To install the Thermal Camera:
 
-If using the STEMMA QT Qwicc connector
+If using the STEMMA QT Qwicc connector:
 - plug in the Qwicc connector into the IR camera
 - connect red wire to a 3.3VDC pin on the raspberry pi
 - connect black wire to ground pin on the raspberry pi
 - connect blue wire to I2C SDA Data pin (pin 3) on the raspberry pi
 - connect yellow to I2C SCL Clock pin (pin 5) on the raspberry pi
+
+If not using the STEMMA QT Qwicc connector:
+![Hardware connection](https://cdn.discordapp.com/attachments/931186498110386192/962484750617047040/unknown.png)
+- Cyan wire: Connect/solder a wire from the cameras 3Vo pin to 3.3VDC on the raspberry pi
+- Brown wire: Connect/solder a wire from the cameras GND pin to ground on the raspberry pi
+- Orange wire: Connect/solder a wire from the cameras SDA pin to pin 3 on the raspberry pi 
+- Green wire: Connect/solder a wire from the cameras SDL pin to pin 5 on the raspberry pi
 
 #### Packages to install to Raspberry Pi for the Thermal Camera
 - sudo apt install python3-matplotlib python3-scipy python3-numpy
