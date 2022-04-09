@@ -57,6 +57,8 @@ List of hardware needed:
 Strongly suggest, but optional:
 - [STEMMA QT / Qwicc JST SH 4-pin to male Headers Cable](https://www.adafruit.com/product/4209)
 
+![Hardware connection](https://cdn.discordapp.com/attachments/931186498110386192/962484750617047040/unknown.png)
+
 #### To install the Thermal Camera:
 
 If using the STEMMA QT Qwicc connector
