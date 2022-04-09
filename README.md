@@ -14,17 +14,15 @@ The system is composed of four different software modules: the GUI, cloud databa
 
 The Hardware used to create the system is a Raspberry Pi, MLX90640 IR Thermal Camera, Piezo Buzzer and the Raspberry Pi Camera V2.
 
----
-
 ## Description of the Repo
 
-
----
+### Face-Mask-Detection
+### RPI_module
+### Unit-Tests
+### WeeklyUpdates
+### Client
+### end-to-end
 
 ## Installation instructions
-
-
-
----
 
 ## Confirmation of installation
