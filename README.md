@@ -55,6 +55,71 @@ List of hardware needed:
 Strongly suggest, but optional:
 - [STEMMA QT / Qwicc JST SH 4-pin to male Headers Cable](https://www.adafruit.com/product/4209)
 
-### Installation of dependencies
+#### To install the Thermal Camera:
+
+If using the STEMMA QT Qwicc connector
+- plug in the Qwicc connector into the IR camera
+- connect red wire to a 3.3VDC pin on the raspberry pi
+- connect black wire to ground pin on the raspberry pi
+- connect blue wire to I2C SDA Data pin (pin 3) on the raspberry pi
+- connect yellow to I2C SCL Clock pin (pin 5) on the raspberry pi
+
+#### Packages to install to Raspberry Pi for the Thermal Camera
+- sudo apt install python3-matplotlib python3-scipy python3-numpy
+- sudo apt install python-smbus i2c-tools
+- sudo pip3 install RPI.GPIO adafruit-blinka
+- sudo pip3 install adafruit-circuitpython-mlx90640
+
+To ensure the camera is properly detected by the raspberry pi, run the following command in the terminal
+- sudo i2cdetect -y 1
+
+#### To install the Raspberry PiCam
+[For a tutorial with pictures visit this link](https://projects.raspberrypi.org/en/projects/getting-started-with-picamera/2)
+Quick tutorial:
+- Shut down the Raspberry Pi
+- Locate the Camera Module port
+- Gently pull up on the edges of the port’s plastic clip
+- Insert the Camera Module ribbon cable; make sure the connectors at the bottom of the ribbon cable are facing the contacts in the port.
+- Push the plastic clip back into place
+- Start up the Raspberry Pi
+- Go to the main menu and open the Raspberry Pi Configuration tool
+- Select the Interfaces tab and ensure that the camera is enabled
+
+#### To install the Buzzer
+- Connect the negative end of the buzzer to a ground pin on the raspberry pi
+- Connect the positive end of the buzzer to any GPIO pin on the raspberry pi. 17 is suggested for this system.
+
+## How to run the system.
+### How to start the RPI_module
+- Make sure that the firebase.json has the information of your firebase
+- In [RPI_module/classes/firebase.py](https://github.com/Seneli/SYSC3010W22_L3W_G4/blob/main/RPI_module/classes/firebase.py) change line 15, 16, 17 to has the information to your firebase
+- in [RPI_module/classes/SMTP.py](https://github.com/Seneli/SYSC3010W22_L3W_G4/blob/main/RPI_module/classes/SMTP.py) change line 7, the receivers to your chosen email(s)
+- Run [RPI_module/main.py](https://github.com/Seneli/SYSC3010W22_L3W_G4/blob/main/RPI_module/main.py)
+This will be constantly looping for a change in "runDetection" to be "true". Once it is true it will take pictures and upload it to storage, wait for mask detection to change the variable of "passMaskDetection". If "passedMaskDetection" is true then it will check for the temperature. If passedTempDetection is true, delete all pictures. If any of the tests failed, it will save the reason why in firebase and send an email to the email was chosen.
+
+### How to start the GUI
+- Seneli write this part please :)
+
+### How to start the Mask Detector
+- Deji write this part please :)
 
 ## Confirmation of installation
+### Confirmation of installation of the Thermal Camera
+- First check if the raspberry pi sees the thermal camera
+	- Run this line in the terminal: sudo i2cdetect -y 1
+	- If it is correctly seen, then "33" should be seen in the "3" column and "30" row
+- If that is present, then [run the code found in the Unit-Test folder named thermal-camera-advanced.py](https://github.com/Seneli/SYSC3010W22_L3W_G4/blob/main/Unit-Tests/thermal-camera-advanced.py). This will give you a live time feed of what the camera sees
+- Idealy have something with a known temperature close to you to test the camera.
+
+### Confirmation of installation of the Pi Camera
+- Need to find what code tests this
+
+### Confirmation of installation of the buzzer
+- [Run the code found in Unit-Test folder named test_buzzer.py](https://github.com/Seneli/SYSC3010W22_L3W_G4/blob/main/Unit-Tests/test_buzzer.py)
+- The buzzer should turn on and off each second
+
+### Confirmation of installation of the GUI
+- Seneli please finish this part :)
+
+### Confirmation of installation of the Mask Detector
+- Deji please finish this part :)
