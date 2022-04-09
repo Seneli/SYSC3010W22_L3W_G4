@@ -75,7 +75,7 @@ To ensure the camera is properly detected by the raspberry pi, run the following
 
 #### To install the Raspberry PiCam
 [For a tutorial with pictures visit this link](https://projects.raspberrypi.org/en/projects/getting-started-with-picamera/2)
-Quick tutorial:
+##### Quick tutorial:
 - Shut down the Raspberry Pi
 - Locate the Camera Module port
 - Gently pull up on the edges of the port’s plastic clip
