@@ -17,10 +17,10 @@ The Hardware used to create the system is a Raspberry Pi, MLX90640 IR Thermal Ca
 ## Description of the Repo
 ### [Face-Mask-Detection](https://github.com/Seneli/SYSC3010W22_L3W_G4/tree/main/Face-Mask-Detection)
 The code located here is responsible for the mask detected module of this system.
-### RPI_module
+### [RPI_module] needs link
 The code located here is responsible for the Raspberry Pi module of this system.
-### Unit-Tests
-The code located here is responsible for testing each module. The possible test are: thermal camera
+### [Unit-Tests](https://github.com/Seneli/SYSC3010W22_L3W_G4/tree/main/Unit-Tests)
+The code located here is responsible for testing each module. The possible test are: [thermal camera](https://github.com/Seneli/SYSC3010W22_L3W_G4/blob/main/Unit-Tests/thermal-camera-advanced.py)
 ### WeeklyUpdates
 ### Client
 ### end-to-end
