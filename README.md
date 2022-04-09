@@ -6,8 +6,6 @@
 - Deji Sayomi, 100847393
 ## TA name: Roger Selzler
 ## Course: SYSC3010
----
-
 ## What is the Covid Rapid Screener?
 
 The Covid Rapid Screener is a embeded system that verifies that a person is correctly wearing their mask and that their body temperature is below 38 degrees celsius.
