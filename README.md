@@ -1,18 +1,11 @@
 # Covid Rapid Screener
-
-## Group number: L3w-G4
-
+## Group number: L3W-G4
 ## Student names:
 - Alexandre Janelle-Goode, 101138523
 - Seneli Seneviratne, 101114455
 - Deji Sayomi, 100847393
-
-## TA name:
-Roger Selzler
-
-## Course
-SYSC3010
-
+## TA name: Roger Selzler
+## Course: SYSC3010
 ---
 
 ## What is the Covid Rapid Screener?
