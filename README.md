@@ -1,3 +1,4 @@
+# Covid Rapid Screener
 # ![Covid Rapid Screener](https://929687.smushcdn.com/2633864/wp-content/uploads/2020/04/face_mask_detection_result01.jpg?lossy=1&strip=1&webp=1)
 
 ## Group number: L3W-G4
