@@ -129,8 +129,13 @@ This will be constantly looping for a change in "runDetection" to be "true". Onc
 - [Run the code found in Unit-Test folder named test_buzzer.py](https://github.com/Seneli/SYSC3010W22_L3W_G4/blob/main/Unit-Tests/test_buzzer.py)
 - The buzzer should turn on and off each second
 
-### Confirmation of installation of the GUI
-- Seneli please finish this part :)
+### Confirmation of a working GUI
+- To confirm that the GUI is working, open a browser and navigate to http://localhost:3000/. If you see the login screen for the Covid Rapid Screener, which should look as follows, then you should have a working GUI. 
+- If you want to confirm the rendering of other pages, try to access the following endpoints as well:
+	- http://localhost:3000/mask
+	- http://localhost:3000/temperature
+	- http://localhost:3000/error
+	- http://localhost:3000/success
 
 ### Confirmation of installation of the Mask Detector
 - Deji please finish this part :)
