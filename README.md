@@ -1,13 +1,14 @@
 # Covid Rapid Screener
 # ![Covid Rapid Screener](https://929687.smushcdn.com/2633864/wp-content/uploads/2020/04/face_mask_detection_result01.jpg?lossy=1&strip=1&webp=1)
 
-## Group number: L3W-G4
-## Student names:
-- Alexandre Janelle-Goode, 101138523
-- Seneli Seneviratne, 101114455
-- Deji Sayomi, 100847393
-## TA name: Roger Selzler
-## Course: SYSC3010
+### Group number: L3W-G4
+### Student names:
+- Alexandre Janelle-Goode
+- Seneli Seneviratne
+- Deji Sayomi
+### TA name: Roger Selzler
+### Course: SYSC3010
+
 ## What is the Covid Rapid Screener?
 
 The Covid Rapid Screener is a embeded system that verifies that a person is correctly wearing their mask and that their body temperature is below 38 degrees celsius.
@@ -16,19 +17,19 @@ The system is composed of four different software modules: the GUI, cloud databa
 
 The Hardware used to create the system is a Raspberry Pi, MLX90640 IR Thermal Camera, Piezo Buzzer and the Raspberry Pi Camera V2.
 
-## Description of the Repo
+## Description of the Repository
 
 ### [Face-Mask-Detection](https://github.com/Seneli/SYSC3010W22_L3W_G4/tree/main/Face-Mask-Detection)
 The code located here is responsible for the mask detected module of this system.
 
-### [RPI_module] needs link
+### [RPI_module](https://github.com/Seneli/SYSC3010W22_L3W_G4/tree/main/RPI_module)
 The code located here is responsible for the Raspberry Pi module of this system. In this folder, there is code for each hardware component located in the "classes" folder.
 
 ### [Client](https://github.com/Seneli/SYSC3010W22_L3W_G4/tree/main/client)
 The code located here is resposible for the GUI.
 
 ### [Unit-Tests](https://github.com/Seneli/SYSC3010W22_L3W_G4/tree/main/Unit-Tests)
-The code located here is responsible for testing each module. The possible test are: 
+The code located here is responsible for testing each module. The possible test are for the: 
 
 - [thermal camera](https://github.com/Seneli/SYSC3010W22_L3W_G4/blob/main/Unit-Tests/thermal-camera-advanced.py)
 
@@ -36,7 +37,7 @@ The code located here is responsible for testing each module. The possible test 
 
 - [buzzer](https://github.com/Seneli/SYSC3010W22_L3W_G4/blob/main/Unit-Tests/test_buzzer.py)
 
-- [mask detector](https://github.com/Seneli/SYSC3010W22_L3W_G4/blob/main/Unit-Tests/DetectorTest/detect_mask_pictureTEST.py)
+- [mask detection module](https://github.com/Seneli/SYSC3010W22_L3W_G4/blob/main/Unit-Tests/DetectorTest/detect_mask_pictureTEST.py)
 
 ### [end-to-end](https://github.com/Seneli/SYSC3010W22_L3W_G4/tree/main/end-to-end)
 This code is used to show that connection and communication can be established between the modules.
@@ -107,7 +108,8 @@ To ensure the camera is properly detected by the raspberry pi, run the following
 This will be constantly looping for a change in "runDetection" to be "true". Once it is true it will take pictures and upload it to storage, wait for mask detection to change the variable of "passMaskDetection". If "passedMaskDetection" is true then it will check for the temperature. If passedTempDetection is true, delete all pictures. If any of the tests failed, it will save the reason why in firebase and send an email to the email was chosen.
 
 ### How to start the GUI
-- Seneli write this part please :)
+- To start the GUI cd into the "client' folder and run "npm start" on the terminal.
+- This will start the GUI on http://localhost:3000/
 
 ### How to start the Mask Detector
 - Deji write this part please :)
