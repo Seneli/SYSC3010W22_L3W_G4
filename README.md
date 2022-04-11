@@ -112,7 +112,9 @@ This will be constantly looping for a change in "runDetection" to be "true". Onc
 - This will start the GUI on http://localhost:3000/
 
 ### How to start the Mask Detector
-- Deji write this part please :)
+- To start the mask detector, navigate to the "Face-Mask-Detection" folder in the terminal or command prompt.
+- Run "py detect_mask_firebase.py" for Windows or "python detect_mask_firebase.py" for Mac and Linux.
+- The above step will only need to be done once (at startup). It does not need to be re-done with every mask screen. 
 
 ## Confirmation of installation
 ### Confirmation of installation of the Thermal Camera
@@ -138,4 +140,6 @@ This will be constantly looping for a change in "runDetection" to be "true". Onc
 	- http://localhost:3000/success
 
 ### Confirmation of installation of the Mask Detector
-- Deji please finish this part :)
+- To confirm the mask detector is installed correctly, navigate to the "Face-Mask-Detection" folder.
+- Ensure the following files are present: "rapid_screener_certificate.json" and "mask_detector.model".
+- Within the "Face-Mask-Detection" folder, navigate to the "face_detector" folder. Ensure the following files are present: "deploy.prototxt" and "res10_300x300_ssd_iter_140000.caffemodel".
