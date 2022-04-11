@@ -1,15 +1,7 @@
 import styled from 'styled-components';
 
-const colourPalette = {
-    mainDarkGreen: '224957',
-    secondaryMintGreen: '#20DF7F',
-    thirdGreyGreen: '4E6D79',
-    white: 'FFFFFF'
-};
-
 const BoxImg = styled.img`
     margin: auto;
-    /* width: 400px;*/
     display: block;
     height: 200px;
     width: auto;
@@ -38,10 +30,7 @@ const CenterContainer = styled.div`
     position: absolute;
     left: 20%;
     width: 60%;
-    height: 80%;
     top: ${(props) => props.placement || '30%'};
-    /* display: flex; */
-    /* justify-content: center; */
     align-items: center;
     height: 200px;
 `;
@@ -50,7 +39,6 @@ const Header = styled.div`
     text-align: center;
     margin: auto;
     padding: 5vh;
-    //color: #FFFFFF;
     background-color: #224957;
 `;
 
@@ -67,7 +55,7 @@ const Title = styled.h1`
 const Text = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap');
 
-    margin: 20px auto;
+    margin: 20px 20px auto;
     color: ${(props) => props.color || '#224957'};
     font-family: 'Lexend Deca', sans-serif;
 `;
@@ -85,7 +73,6 @@ const InputText = styled.input.attrs({
     font-weight: normal;
     font-size: 14px;
     line-height: 20px;
-    /* identical to box height, or 143% */
     padding: 10px 15px;
     color: #ffffff;
 
@@ -110,7 +97,6 @@ const InputSubmit = styled.input.attrs({
     font-weight: normal;
     font-size: 16px;
     line-height: 20px;
-    /* identical to box height, or 125% */
     text-align: center;
     text-transform: capitalize;
     color: #224957;
@@ -131,7 +117,6 @@ const Button = styled.button`
     font-weight: normal;
     font-size: 16px;
     line-height: 20px;
-    /* identical to box height, or 125% */
     text-align: center;
     text-transform: capitalize;
     color: #224957;

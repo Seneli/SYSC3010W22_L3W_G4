@@ -25,7 +25,7 @@ const MaskDetection: React.FunctionComponent<MaskDetectionProps> = () => {
                     // res.items.forEach((item) => {
                     //     console.log(item);
                     // });
-                    getDownloadURL(res.items[res.items.length - 2])
+                    getDownloadURL(res.items[res.items.length - 1])
                         .then((url) => {
                             setLastImageRef(url);
                         })

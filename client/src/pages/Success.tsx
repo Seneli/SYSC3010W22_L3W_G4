@@ -29,7 +29,7 @@ const Success = () => {
         <>
             <CenterContainer>
                 <BoxContainer background="#B8F8D8">
-                    <Title top="10%">Thank you for using CRS</Title>
+                    <Title top="50px">Thank you for using CRS</Title>
                     <Text>Proceed to the doors to enter the establishment</Text>
                 </BoxContainer>
                 <InputSubmit value="Screen New User" onClick={(e: any) => handleSubmit(e)} />

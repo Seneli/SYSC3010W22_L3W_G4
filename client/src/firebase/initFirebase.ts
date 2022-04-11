@@ -17,16 +17,16 @@ const firebaseStorage = getStorage(app);
 const systemStorageFolder = ref(firebaseStorage, process.env.REACT_APP_PUBLIC_FIREBASE_SYSTEM_NUMBER);
 
 const deleteImage = (refName: string) => {
-    // const imageRef = ref(firebaseStorage, process.env.REACT_APP_PUBLIC_FIREBASE_SYSTEM_NUMBER + '/' + refName);
-    // console.log(imageRef);
+    const imageRef = ref(firebaseStorage, process.env.REACT_APP_PUBLIC_FIREBASE_SYSTEM_NUMBER + '/' + refName);
+    console.log(imageRef);
 
-    // deleteObject(imageRef)
-    //     .then(() => {
-    //         console.log('image deleted successfully!');
-    //     })
-    //     .catch((error) => {
-    //         console.log('failed to delete image!', imageRef);
-    //     });
+    deleteObject(imageRef)
+        .then(() => {
+            console.log('image deleted successfully!');
+        })
+        .catch((error) => {
+            console.log('failed to delete image!', imageRef);
+        });
 
     const processedImgRef = ref(firebaseStorage, `/${process.env.REACT_APP_PUBLIC_FIREBASE_SYSTEM_NUMBER}_processed_images/${refName}`);
 

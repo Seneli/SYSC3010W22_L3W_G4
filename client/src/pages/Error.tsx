@@ -44,10 +44,10 @@ const Error: React.FunctionComponent<ErrorProps> = () => {
         <>
             <CenterContainer>
                 <BoxContainer background="#23667E">
-                    <Title color="#fff" top="10%">
-                        Error Page
+                    <Title color="#fff" top="5%">
+                        Screening Failed
                     </Title>
-                    <Text color="#fff">If you have reached this page it means you hit an error</Text>
+                    <Text color="#fff">If you have reached this page it means you have failed the mask or temperature screening. The system admin has been contacted and will be there to assist you shortly.</Text>
                 </BoxContainer>
                 <InputSubmit value="Return to Sign In Page" onClick={(e: any) => handleSubmit(e)} />
             </CenterContainer>
