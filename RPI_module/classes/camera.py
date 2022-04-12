@@ -19,8 +19,8 @@ class Camera:
 
     #takes in camera instance and degrees
     #rotates camera to indicated degree
-    def rotate_camera(self, camera, degrees):
-        camera.rotation(degrees)
+    def rotate_camera(self, degrees):
+        self.camera.rotation = 180
         
     #takes in camera instance, output image location, countdown time and preview boolean .
     #If preview is true, preview is started
