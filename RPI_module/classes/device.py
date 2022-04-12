@@ -97,7 +97,7 @@ class Device:
             print("Temperature is above 38 degrees celsius")
             self.firebase.set_passedTempDetection("false")
             self.firebase.set_detectedTemp(str(temp))
-            self.user_failed_screening() # move this to else statement when almost done
+            self.user_failed_screening()
             self.myBuzzer.buzz()
         else:
             print("Temperature is under 38 degrees celsius")
@@ -135,5 +135,4 @@ class Device:
                 self.currentTest = "waiting"
                 
 
-# Flake8 output:
-# nothing
+

@@ -18,7 +18,6 @@ class FireBase:
     def die(self):
         delete_app(self.app)
 
-        # Put your local file path 
     def put_image_in_storage(self, sys_num, img_name):
         blob = self.storage.blob(str(sys_num) + "/" + img_name)
         blob.upload_from_filename("./images/" + img_name)
@@ -26,7 +25,6 @@ class FireBase:
     def check_image_exists_in_storage(self, image_name_in_storage):
         pass
 
-    #initialize data structure in DATABASE
     def initialize_rtdb_datastruct(self):
         baseRef = db.reference('/', self.app)
         baseRef.child(self.system_number).set({
