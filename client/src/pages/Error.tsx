@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { realtimeDB, deleteImage } from '../firebase/initFirebase';
 import { ref, update, onValue } from 'firebase/database';
-import { BoxContainer, CenterContainer, Header, Title, Text, InputText, InputSubmit, Vectors } from '../styles/styledComponents';
+import { BoxContainer, CenterContainer, Title, Text, InputSubmit, Vectors } from '../styles/styledComponents';
 import vectorsImg from '../media/Vectors.png';
 
 interface ErrorProps {}
@@ -47,7 +47,9 @@ const Error: React.FunctionComponent<ErrorProps> = () => {
                     <Title color="#fff" top="5%">
                         Screening Failed
                     </Title>
-                    <Text color="#fff">If you have reached this page it means you have failed the mask or temperature screening. The system admin has been contacted and will be there to assist you shortly.</Text>
+                    <Text color="#fff">
+                        If you have reached this page it means you have failed the mask or temperature screening. The system admin has been contacted and will be there to assist you shortly.
+                    </Text>
                 </BoxContainer>
                 <InputSubmit value="Return to Sign In Page" onClick={(e: any) => handleSubmit(e)} />
             </CenterContainer>

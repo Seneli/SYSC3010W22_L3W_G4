@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getStorage, ref, deleteObject, getDownloadURL, listAll, StorageReference } from 'firebase/storage';
+import { getStorage, ref, deleteObject } from 'firebase/storage';
 import { getDatabase } from 'firebase/database';
 
 const config = {

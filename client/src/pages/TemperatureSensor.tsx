@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { realtimeDB } from '../firebase/initFirebase';
 import { ref, onValue } from 'firebase/database';
 import { useNavigate } from 'react-router-dom';
-import { BoxContainer, CenterContainer, Header, Title, Text, InputText, InputSubmit, Vectors } from '../styles/styledComponents';
+import { BoxContainer, CenterContainer, Title, Text, Vectors } from '../styles/styledComponents';
 import vectorsImg from '../media/Vectors.png';
-import { setFlagsFromString } from 'v8';
 
 interface TemperatureSensorProps {}
 
@@ -56,7 +55,6 @@ const TemperatureSensor: React.FunctionComponent<TemperatureSensorProps> = () =>
                         Moving to next page in 3 seconds
                     </Title>
                 </BoxContainer>
-                <InputSubmit onClick={temperatureValidation} />
             </CenterContainer>
             <Vectors src={vectorsImg} />
         </>
