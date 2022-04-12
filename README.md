@@ -125,7 +125,8 @@ This will be constantly looping for a change in "runDetection" to be "true". Onc
 - Idealy have something with a known temperature close to you to test the camera.
 
 ### Confirmation of installation of the Pi Camera
-- Need to find what code tests this
+- In a command line use command: raspistill -o Desktop/image.jpg
+- A picture should be found on your desktop. If there is the camera is correctly installed
 
 ### Confirmation of installation of the buzzer
 - [Run the code found in Unit-Test folder named test_buzzer.py](https://github.com/Seneli/SYSC3010W22_L3W_G4/blob/main/Unit-Tests/test_buzzer.py)
