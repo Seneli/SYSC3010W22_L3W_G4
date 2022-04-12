@@ -7,7 +7,7 @@ import vectorsImg from '../media/Vectors.png';
 const Success = () => {
     const navigate = useNavigate();
 
-    const handleSubmit = (e: any) => {
+    const resetForNewUser = (e: any) => {
         e.preventDefault();
 
         update(ref(realtimeDB, process.env.REACT_APP_PUBLIC_FIREBASE_SYSTEM_NUMBER + '/System_Variables'), {
@@ -32,7 +32,7 @@ const Success = () => {
                     <Title top="50px">Thank you for using CRS</Title>
                     <Text>Proceed to the doors to enter the establishment</Text>
                 </BoxContainer>
-                <InputSubmit value="Screen New User" onClick={(e: any) => handleSubmit(e)} />
+                <InputSubmit value="Screen New User" onClick={(e: any) => resetForNewUser(e)} />
             </CenterContainer>
             <Vectors src={vectorsImg} />
         </>

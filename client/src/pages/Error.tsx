@@ -10,7 +10,7 @@ interface ErrorProps {}
 const Error: React.FunctionComponent<ErrorProps> = () => {
     const navigate = useNavigate();
 
-    const handleSubmit = (e: any) => {
+    const resetForNewUser = (e: any) => {
         e.preventDefault();
         console.log(realtimeDB);
 
@@ -29,17 +29,6 @@ const Error: React.FunctionComponent<ErrorProps> = () => {
         navigate('/');
     };
 
-    const tempSenseState = ref(realtimeDB, process.env.REACT_APP_PUBLIC_FIREBASE_SYSTEM_NUMBER + 'System_Variables/' + 'passedTempDetection');
-    onValue(tempSenseState, (snapshot) => {
-        const data = snapshot.val();
-        console.log(data);
-        if (data === 'true') {
-            navigate('/Success');
-        } else if (data === 'false') {
-            navigate('/Error');
-        }
-    });
-
     return (
         <>
             <CenterContainer>
@@ -51,7 +40,7 @@ const Error: React.FunctionComponent<ErrorProps> = () => {
                         If you have reached this page it means you have failed the mask or temperature screening. The system admin has been contacted and will be there to assist you shortly.
                     </Text>
                 </BoxContainer>
-                <InputSubmit value="Return to Sign In Page" onClick={(e: any) => handleSubmit(e)} />
+                <InputSubmit value="Return to Sign In Page" onClick={(e: any) => resetForNewUser(e)} />
             </CenterContainer>
             <Vectors src={vectorsImg} />
         </>
